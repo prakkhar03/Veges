@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO MANAGEMENT PAGE</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .table img {
+            max-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Khane ka Naam</th>
+                    <th scope="col">Kaise bana</th>
+                    <th scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.descp }}</td>
+                    <td>
+                        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}"></td>
+                        <td>
+                            <a href='/delete/{{ recipe.id }}/' class='btn btn-danger'>DELETE</a>
+                     </td>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="window.location.href='/'">EXIT</button>
+    </div>
+</body>
+</html>
