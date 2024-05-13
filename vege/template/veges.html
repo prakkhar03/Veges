@@ -84,29 +84,10 @@
                 <input name="image" required type="file" id="recipeImage" class="form-control">
             </div>
             <div class="btn-container">
-                <button type="submit" class="btn-primary">SAVE</button>
+                <button type="submit" class="btn-primary">Upload</button>
             </div>
         </form>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Khane ka Naam</th>
-                    <th scope="col">Kaise banega</th>
-                    <th scope="col">Photo tho banti hai</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for receipe in receipies %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ receipe.name }}</td>
-                    <td>{{ receipe.descp }}</td>
-                    <td>{{ receipe.image }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-     </div>
-</body>
-</html>
+        <button onclick="window.location.href='/'">EXIT</button>
+    
+        
+        
