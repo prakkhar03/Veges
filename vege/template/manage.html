@@ -45,12 +45,19 @@
                     <td>
                         <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}"></td>
                         <td>
-                            <a href='/delete/{{ recipe.id }}/' class='btn btn-danger'>DELETE</a>
+                            <button onclick="window.location.href='/update/{{ recipe.id }}/'">UPDATE</button>
+                            <button onclick="window.location.href='/delete/{{ recipe.id }}/'">DELETE</button>
                      </td>
                 {% endfor %}
             </tbody>
         </table>
-        <button onclick="window.location.href='/'">EXIT</button>
+        <form  method="get">
+            <label for="search_query">Search:</label>
+            <input type="text" id="search_query" name="q" placeholder="Enter your search query">
+            <button  required type="submit">Search</button>
+        </form>
+        
+        <button onclick="window.location.href='/frontpage/'">EXIT</button>
     </div>
 </body>
 </html>
