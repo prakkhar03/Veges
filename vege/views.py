@@ -54,11 +54,11 @@ def update(request, id):
 
 def loginpage(request):
     if request.method == 'POST':
-        data = request.POST
-        username = data.get("username")
-        password = data.get("password")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
+        
         if user is not None:
             login(request, user)
             return redirect('/frontpage')
@@ -82,7 +82,6 @@ def register(request):
         user = User(first_name=first_name, last_name=last_name, username=username)
         user.set_password(password)
         user.save()
-        
         return redirect('/')
     
     return render(request, 'register.html')
