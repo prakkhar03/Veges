@@ -52,44 +52,5 @@ def update(request, id):
     context = {'receipies': recipe}
     return render(request, 'update.html', context)
 
-from django.shortcuts import render
-from django.http import HttpResponse
-
-def loginpage(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print(username, password)
-        if username and password:
-            user = authenticate(username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect('/')
-            print("Received username:", username)
-            print("Received password:", password)
-        else:
-            return HttpResponse("Username or password is missing!")
-    else:
-        return render(request, 'login.html')
-
-def register(request):
-    if request.method == 'POST':
-        data = request.POST
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        username = data.get("username")
-        password = data.get("password")
-        
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "User already exists")
-            return redirect('/register')
-        
-        user = User(first_name=first_name, last_name=last_name, username=username)
-        user.set_password(password)
-        user.save()
-        return redirect('/')
-    
-    return render(request, 'register.html')
-
 def frontpage1(request):
     return render(request, 'frontpage1.html')
