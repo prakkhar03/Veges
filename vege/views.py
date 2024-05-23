@@ -52,19 +52,25 @@ def update(request, id):
     context = {'receipies': recipe}
     return render(request, 'update.html', context)
 
+from django.shortcuts import render
+from django.http import HttpResponse
+
 def loginpage(request):
     if request.method == 'POST':
-        uest.POST.get("userna"e")"
-        pest.POST.get("passwo"d")"
-        
-        user = authenticate(request, username=u, password=p)
-        if user is not None:
-            login(request, user)
-            return redirect('/frontpage')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username, password)
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect('/')
+            print("Received username:", username)
+            print("Received password:", password)
         else:
-            messages.error(request, "Invalid username or password")
-            return redirect('/')
-    return render(request, 'login.html')
+            return HttpResponse("Username or password is missing!")
+    else:
+        return render(request, 'login.html')
 
 def register(request):
     if request.method == 'POST':
