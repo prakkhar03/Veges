@@ -6,7 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 urlpatterns = [
-    path('/', frontpage, name='front'),
+    path('', frontpage, name='front'),
     path('recipe/', receipies, name='receipes'), 
     path('uploaded/', upload, name='uploaded'),
     path('delete/<id>/', delete, name='delete'),
